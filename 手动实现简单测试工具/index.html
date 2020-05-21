@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./math.js"></script>
+  <script>
+    // console.log(add(1, 2))
+
+    function expect(fn) {
+      return {
+        tobe(result) {
+          if (fn !== result) {
+            throw `测试未通过：期望值是${result},得到是${fn}`
+          }
+        }
+      }
+    }
+    function test(dsec, cb){
+      try {
+        cb()
+        console.log(`${dsec}通过`)
+      } catch (error) {
+        console.log(error)
+      }
+      // expect(dsec, cb)
+    }
+    test('测试add(1,2)等于4', () => {
+      expect(add(1, 2)).tobe(3)
+    })
+    test('测试add(1,2)等于4', () => {
+      expect(add(1, 2)).tobe(5)
+    })
+    test('测试add(1,2)等于4', () => {
+      expect(add(1, 2)).tobe(6)
+    })
+    // console.log(expect(add(1, 2)))
+  </script>
+</body>
+
+</html>
